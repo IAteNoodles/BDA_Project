@@ -1,0 +1,120 @@
+Python	2025-07-01	9485.94	8063.05	10908.83	v1.0-arima	Global
+Python	2025-08-01	9754.41	8291.25	11217.57	v1.0-arima	Global
+Python	2025-09-01	10022.88	8519.45	11526.31	v1.0-arima	Global
+Python	2025-10-01	10291.35	8747.65	11835.05	v1.0-arima	Global
+Python	2025-11-01	10559.82	8975.85	12143.79	v1.0-arima	Global
+Python	2025-12-01	10828.29	9204.05	12452.53	v1.0-arima	Global
+SQL	2025-07-01	7333.08	6233.12	8433.04	v1.0-arima	Global
+SQL	2025-08-01	7540.62	6409.53	8671.71	v1.0-arima	Global
+SQL	2025-09-01	7748.16	6585.94	8910.38	v1.0-arima	Global
+SQL	2025-10-01	7955.7	6762.34	9149.05	v1.0-arima	Global
+SQL	2025-11-01	8163.24	6938.75	9387.73	v1.0-arima	Global
+SQL	2025-12-01	8370.78	7115.16	9626.4	v1.0-arima	Global
+TensorFlow	2025-07-01	5995.64	5096.29	6894.99	v1.0-arima	Global
+TensorFlow	2025-08-01	6179.18	5252.3	7106.06	v1.0-arima	Global
+TensorFlow	2025-09-01	6362.72	5408.31	7317.13	v1.0-arima	Global
+TensorFlow	2025-10-01	6546.26	5564.32	7528.2	v1.0-arima	Global
+TensorFlow	2025-11-01	6729.8	5720.33	7739.27	v1.0-arima	Global
+TensorFlow	2025-12-01	6913.34	5876.34	7950.34	v1.0-arima	Global
+Kubernetes	2025-07-01	6391.35	5432.65	7350.05	v1.0-arima	Global
+Kubernetes	2025-08-01	6573.96	5587.87	7560.05	v1.0-arima	Global
+Kubernetes	2025-09-01	6756.57	5743.08	7770.06	v1.0-arima	Global
+Kubernetes	2025-10-01	6939.18	5898.3	7980.06	v1.0-arima	Global
+Kubernetes	2025-11-01	7121.79	6053.52	8190.06	v1.0-arima	Global
+Kubernetes	2025-12-01	7304.4	6208.74	8400.06	v1.0-arima	Global
+PyTorch	2025-07-01	5944.48	5052.81	6836.15	v1.0-arima	Global
+PyTorch	2025-08-01	6112.72	5195.81	7029.63	v1.0-arima	Global
+PyTorch	2025-09-01	6280.96	5338.82	7223.1	v1.0-arima	Global
+PyTorch	2025-10-01	6449.2	5481.82	7416.58	v1.0-arima	Global
+PyTorch	2025-11-01	6617.44	5624.82	7610.06	v1.0-arima	Global
+PyTorch	2025-12-01	6785.68	5767.83	7803.53	v1.0-arima	Global
+Scala	2025-07-01	5542.0	4710.7	6373.3	v1.0-arima	Global
+Scala	2025-08-01	5708.26	4852.02	6564.5	v1.0-arima	Global
+Scala	2025-09-01	5874.52	4993.34	6755.7	v1.0-arima	Global
+Scala	2025-10-01	6040.78	5134.66	6946.9	v1.0-arima	Global
+Scala	2025-11-01	6207.04	5275.98	7138.1	v1.0-arima	Global
+Scala	2025-12-01	6373.3	5417.31	7329.3	v1.0-arima	Global
+Linux	2025-07-01	5694.55	4840.37	6548.73	v1.0-arima	Global
+Linux	2025-08-01	5854.97	4976.72	6733.22	v1.0-arima	Global
+Linux	2025-09-01	6015.38	5113.07	6917.69	v1.0-arima	Global
+Linux	2025-10-01	6175.78	5249.41	7102.15	v1.0-arima	Global
+Linux	2025-11-01	6336.19	5385.76	7286.62	v1.0-arima	Global
+Linux	2025-12-01	6496.6	5522.11	7471.09	v1.0-arima	Global
+Git	2025-07-01	5250.05	4462.54	6037.56	v1.0-arima	Global
+Git	2025-08-01	5403.71	4593.15	6214.27	v1.0-arima	Global
+Git	2025-09-01	5557.37	4723.76	6390.98	v1.0-arima	Global
+Git	2025-10-01	5711.03	4854.38	6567.68	v1.0-arima	Global
+Git	2025-11-01	5864.69	4984.99	6744.39	v1.0-arima	Global
+Git	2025-12-01	6018.35	5115.6	6921.1	v1.0-arima	Global
+Java	2025-07-01	5338.9	4538.06	6139.73	v1.0-arima	Global
+Java	2025-08-01	5492.18	4668.35	6316.01	v1.0-arima	Global
+Java	2025-09-01	5645.44	4798.62	6492.26	v1.0-arima	Global
+Java	2025-10-01	5798.72	4928.91	6668.53	v1.0-arima	Global
+Java	2025-11-01	5951.98	5059.18	6844.78	v1.0-arima	Global
+Java	2025-12-01	6105.25	5189.46	7021.04	v1.0-arima	Global
+GCP	2025-07-01	5098.08	4333.37	5862.79	v1.0-arima	Global
+GCP	2025-08-01	5245.14	4458.37	6031.91	v1.0-arima	Global
+GCP	2025-09-01	5392.2	4583.37	6201.03	v1.0-arima	Global
+GCP	2025-10-01	5539.26	4708.37	6370.15	v1.0-arima	Global
+GCP	2025-11-01	5686.32	4833.37	6539.27	v1.0-arima	Global
+GCP	2025-12-01	5833.38	4958.37	6708.39	v1.0-arima	Global
+Hadoop	2025-07-01	5095.34	4331.04	5859.64	v1.0-arima	Global
+Hadoop	2025-08-01	5238.2	4452.47	6023.93	v1.0-arima	Global
+Hadoop	2025-09-01	5381.06	4573.9	6188.22	v1.0-arima	Global
+Hadoop	2025-10-01	5523.92	4695.33	6352.51	v1.0-arima	Global
+Hadoop	2025-11-01	5666.78	4816.76	6516.8	v1.0-arima	Global
+Hadoop	2025-12-01	5809.64	4938.19	6681.09	v1.0-arima	Global
+R	2025-07-01	4913.13	4176.16	5650.1	v1.0-arima	Global
+R	2025-08-01	5052.85	4294.92	5810.78	v1.0-arima	Global
+R	2025-09-01	5192.56	4413.68	5971.44	v1.0-arima	Global
+R	2025-10-01	5332.27	4532.43	6132.11	v1.0-arima	Global
+R	2025-11-01	5471.97	4651.17	6292.77	v1.0-arima	Global
+R	2025-12-01	5611.68	4769.93	6453.43	v1.0-arima	Global
+Tableau	2025-07-01	4863.43	4133.92	5592.94	v1.0-arima	Global
+Tableau	2025-08-01	5003.05	4252.59	5753.51	v1.0-arima	Global
+Tableau	2025-09-01	5142.67	4371.27	5914.07	v1.0-arima	Global
+Tableau	2025-10-01	5282.29	4489.95	6074.63	v1.0-arima	Global
+Tableau	2025-11-01	5421.91	4608.62	6235.2	v1.0-arima	Global
+Tableau	2025-12-01	5561.53	4727.3	6395.76	v1.0-arima	Global
+Computer Vision	2025-07-01	4674.0	3972.9	5375.1	v1.0-arima	Global
+Computer Vision	2025-08-01	4810.8	4089.18	5532.42	v1.0-arima	Global
+Computer Vision	2025-09-01	4947.6	4205.46	5689.74	v1.0-arima	Global
+Computer Vision	2025-10-01	5084.4	4321.74	5847.06	v1.0-arima	Global
+Computer Vision	2025-11-01	5221.2	4438.02	6004.38	v1.0-arima	Global
+Computer Vision	2025-12-01	5358.0	4554.3	6161.7	v1.0-arima	Global
+Data Visualization	2025-07-01	4793.92	4074.83	5513.01	v1.0-arima	Global
+Data Visualization	2025-08-01	4930.24	4190.7	5669.78	v1.0-arima	Global
+Data Visualization	2025-09-01	5066.56	4306.58	5826.54	v1.0-arima	Global
+Data Visualization	2025-10-01	5202.88	4422.45	5983.31	v1.0-arima	Global
+Data Visualization	2025-11-01	5339.2	4538.32	6140.08	v1.0-arima	Global
+Data Visualization	2025-12-01	5475.52	4654.19	6296.85	v1.0-arima	Global
+Spark	2025-07-01	4750.43	4037.87	5462.99	v1.0-arima	Global
+Spark	2025-08-01	4882.99	4150.54	5615.44	v1.0-arima	Global
+Spark	2025-09-01	5015.56	4263.23	5767.89	v1.0-arima	Global
+Spark	2025-10-01	5148.14	4375.92	5920.36	v1.0-arima	Global
+Spark	2025-11-01	5280.7	4488.59	6072.8	v1.0-arima	Global
+Spark	2025-12-01	5413.27	4601.28	6225.26	v1.0-arima	Global
+MLOps	2025-07-01	4373.64	3717.59	5029.69	v1.0-arima	Global
+MLOps	2025-08-01	4502.91	3827.47	5178.35	v1.0-arima	Global
+MLOps	2025-09-01	4632.18	3937.35	5327.01	v1.0-arima	Global
+MLOps	2025-10-01	4761.45	4047.23	5475.67	v1.0-arima	Global
+MLOps	2025-11-01	4890.72	4157.11	5624.33	v1.0-arima	Global
+MLOps	2025-12-01	5019.99	4266.99	5772.99	v1.0-arima	Global
+Azure	2025-07-01	4495.05	3820.79	5169.31	v1.0-arima	Global
+Azure	2025-08-01	4623.48	3929.96	5317.0	v1.0-arima	Global
+Azure	2025-09-01	4751.91	4039.12	5464.7	v1.0-arima	Global
+Azure	2025-10-01	4880.34	4148.29	5612.39	v1.0-arima	Global
+Azure	2025-11-01	5008.77	4257.45	5760.09	v1.0-arima	Global
+Azure	2025-12-01	5137.2	4366.62	5907.78	v1.0-arima	Global
+Deep Learning	2025-07-01	4165.0	3540.25	4789.75	v1.0-arima	Global
+Deep Learning	2025-08-01	4292.5	3648.62	4936.38	v1.0-arima	Global
+Deep Learning	2025-09-01	4420.0	3757.0	5083.0	v1.0-arima	Global
+Deep Learning	2025-10-01	4547.5	3865.38	5229.62	v1.0-arima	Global
+Deep Learning	2025-11-01	4675.0	3973.75	5376.25	v1.0-arima	Global
+Deep Learning	2025-12-01	4802.5	4082.12	5522.88	v1.0-arima	Global
+NLP	2025-07-01	4286.35	3643.4	4929.3	v1.0-arima	Global
+NLP	2025-08-01	4413.04	3751.08	5075.0	v1.0-arima	Global
+NLP	2025-09-01	4539.73	3858.77	5220.69	v1.0-arima	Global
+NLP	2025-10-01	4666.42	3966.46	5366.38	v1.0-arima	Global
+NLP	2025-11-01	4793.11	4074.14	5512.08	v1.0-arima	Global
+NLP	2025-12-01	4919.8	4181.83	5657.77	v1.0-arima	Global

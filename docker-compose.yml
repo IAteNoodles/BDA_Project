@@ -1,0 +1,342 @@
+services:
+  namenode:
+    image: bde2020/hadoop-namenode:2.0.0-hadoop3.2.1-java8
+    container_name: namenode
+    restart: always
+    ports:
+      - "9870:9870"
+      - "9000:9000"
+    environment:
+      CLUSTER_NAME: job-market-cluster
+      CORE_CONF_fs_defaultFS: hdfs://namenode:9000
+      CORE_CONF_hadoop_tmp_dir: /data/hadoop
+      HDFS_CONF_dfs_replication: 1
+      HDFS_CONF_dfs_permissions_enabled: "false"
+    volumes:
+      - namenode_data:/data/hadoop
+    networks:
+      - job-market
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9870"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop3.2.1-java8
+    container_name: datanode
+    restart: always
+    ports:
+      - "9864:9864"
+    environment:
+      SERVICE_PRECONDITION: namenode:9870
+      CORE_CONF_fs_defaultFS: hdfs://namenode:9000
+      CORE_CONF_hadoop_tmp_dir: /data/hadoop
+      HDFS_CONF_dfs_replication: 1
+    volumes:
+      - datanode_data:/data/hadoop
+    networks:
+      - job-market
+    depends_on:
+      namenode:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9864"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  spark-master:
+    image: bde2020/spark-master:3.0.0-hadoop3.2
+    container_name: spark-master
+    restart: always
+    ports:
+      - "7077:7077"
+      - "8080:8080"
+      - "4040:4040"
+    environment:
+      INIT_DAEMON_STEP: setup_spark
+      CORE_CONF_fs_defaultFS: hdfs://namenode:9000
+    volumes:
+      - spark_data:/data
+    networks:
+      - job-market
+    depends_on:
+      - namenode
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  spark-worker-1:
+    image: bde2020/spark-worker:3.0.0-hadoop3.2
+    container_name: spark-worker-1
+    restart: always
+    ports:
+      - "18081:8081"
+    environment:
+      SPARK_MASTER: spark://spark-master:7077
+      SPARK_WORKER_CORES: 2
+      SPARK_WORKER_MEMORY: 2G
+      CORE_CONF_fs_defaultFS: hdfs://namenode:9000
+    volumes:
+      - spark_data:/data
+    networks:
+      - job-market
+    depends_on:
+      spark-master:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8081"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.0.1
+    container_name: zookeeper
+    restart: always
+    ports:
+      - "2181:2181"
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    volumes:
+      - zookeeper_data:/var/lib/zookeeper/data
+      - zookeeper_logs:/var/lib/zookeeper/log
+    networks:
+      - job-market
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/commands/ruok"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  kafka:
+    image: confluentinc/cp-kafka:7.0.1
+    container_name: kafka
+    restart: always
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:29092,PLAINTEXT_HOST://0.0.0.0:9092
+    volumes:
+      - kafka_data:/var/lib/kafka/data
+    networks:
+      - job-market
+    depends_on:
+      zookeeper:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "kafka-topics", "--list", "--bootstrap-server", "localhost:29092"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  hbase:
+    image: bde2020/hbase-master:1.0.0-hbase1.2.6
+    container_name: hbase
+    restart: always
+    ports:
+      - "16010:16010"
+    environment:
+      SERVICE_PRECONDITION: namenode:9870
+      HBASE_CONF_hbase_rootdir: hdfs://namenode:9000/hbase
+      HBASE_CONF_hbase_zookeeper_quorum: localhost
+      HBASE_MANAGES_ZK: "true"
+    volumes:
+      - hbase_data:/data/hbase
+    networks:
+      - job-market
+    depends_on:
+      - namenode
+
+  postgres:
+    image: iatenoodles/bda-postgres:latest
+    container_name: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: job_market
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres123
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - job-market
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: redis
+    restart: always
+    ports:
+      - "16379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - job-market
+    command: redis-server --appendonly yes --requirepass redis123
+    healthcheck:
+      test: ["CMD", "redis-cli", "-a", "redis123", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  api-server:
+    image: iatenoodles/bda-api-server:latest
+    container_name: api-server
+    restart: always
+    ports:
+      - "18080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/job_market
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres123
+      SPRING_REDIS_HOST: redis
+      SPRING_REDIS_PORT: 6379
+      SPRING_REDIS_PASSWORD: redis123
+      HBASE_HOST: hbase
+      HBASE_PORT: 2181
+      HDFS_NAMENODE_URI: hdfs://namenode:9000
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+    networks:
+      - job-market
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      kafka:
+        condition: service_healthy
+
+  frontend:
+    image: iatenoodles/bda-frontend:latest
+    container_name: frontend
+    restart: always
+    ports:
+      - "5173:3000"
+    networks:
+      - job-market
+    depends_on:
+      - api-server
+
+  kafka-consumer:
+    image: iatenoodles/bda-kafka-consumer:latest
+    container_name: kafka-consumer
+    restart: always
+    environment:
+      SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      HBASE_HOST: hbase
+      HBASE_PORT: 2181
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/job_market
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: postgres123
+    networks:
+      - job-market
+    depends_on:
+      kafka:
+        condition: service_healthy
+      hbase:
+        condition: service_started
+
+  spark-jobs:
+    image: iatenoodles/bda-spark-jobs:latest
+    container_name: spark-jobs
+    restart: always
+    environment:
+      SPARK_MASTER: spark://spark-master:7077
+      HDFS_NAMENODE_URI: hdfs://namenode:9000
+    networks:
+      - job-market
+    depends_on:
+      - spark-master
+      - namenode
+
+  airflow-db-init:
+    image: apache/airflow:2.5.0-python3.9
+    container_name: airflow-db-init
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://postgres:postgres123@postgres:5432/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+    networks:
+      - job-market
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: db init
+
+  airflow-webserver:
+    image: apache/airflow:2.5.0-python3.9
+    container_name: airflow-webserver
+    restart: always
+    ports:
+      - "8888:8080"
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://postgres:postgres123@postgres:5432/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+      AIRFLOW__WEBSERVER__AUTHENTICATE: "false"
+      _AIRFLOW_WWW_USER_CREATE: "true"
+      _AIRFLOW_WWW_USER_USERNAME: admin
+      _AIRFLOW_WWW_USER_PASSWORD: admin
+    volumes:
+      - airflow_data:/opt/airflow
+    networks:
+      - job-market
+    depends_on:
+      airflow-db-init:
+        condition: service_completed_successfully
+    command: webserver
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  airflow-scheduler:
+    image: apache/airflow:2.5.0-python3.9
+    container_name: airflow-scheduler
+    restart: always
+    environment:
+      AIRFLOW__CORE__EXECUTOR: LocalExecutor
+      AIRFLOW__CORE__SQL_ALCHEMY_CONN: postgresql+psycopg2://postgres:postgres123@postgres:5432/airflow
+      AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+    volumes:
+      - airflow_data:/opt/airflow
+    networks:
+      - job-market
+    depends_on:
+      airflow-db-init:
+        condition: service_completed_successfully
+    command: scheduler
+
+volumes:
+  namenode_data:
+  datanode_data:
+  spark_data:
+  zookeeper_data:
+  zookeeper_logs:
+  kafka_data:
+  hbase_data:
+  postgres_data:
+  redis_data:
+  airflow_data:
+
+networks:
+  job-market:
+    driver: bridge

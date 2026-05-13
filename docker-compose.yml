@@ -160,7 +160,9 @@ services:
       - namenode
 
   postgres:
-    image: iatenoodles/bda-postgres:latest
+    build:
+      context: ./backend/database
+      dockerfile: Dockerfile
     container_name: postgres
     restart: always
     ports:
@@ -198,6 +200,9 @@ services:
 
   api-server:
     image: iatenoodles/bda-api-server:latest
+    build:
+      context: ./backend/api-server
+      dockerfile: Dockerfile
     container_name: api-server
     restart: always
     ports:
@@ -213,6 +218,7 @@ services:
       HBASE_PORT: 2181
       HDFS_NAMENODE_URI: hdfs://namenode:9000
       SPRING_KAFKA_BOOTSTRAP_SERVERS: kafka:29092
+      ML_SERVICE_URL: http://ml-service:5000
     networks:
       - job-market
     depends_on:
@@ -222,9 +228,36 @@ services:
         condition: service_healthy
       kafka:
         condition: service_healthy
+      ml-service:
+        condition: service_started
+
+  ml-service:
+    build:
+      context: ./backend/ml-service
+      dockerfile: Dockerfile
+    container_name: ml-service
+    restart: always
+    ports:
+      - "5100:5000"
+    environment:
+      ML_DB_HOST: postgres
+      ML_DB_PORT: 5432
+      ML_DB_NAME: job_market
+      ML_DB_USER: postgres
+      ML_DB_PASSWORD: postgres123
+    networks:
+      - job-market
+    depends_on:
+      postgres:
+        condition: service_healthy
 
   frontend:
     image: iatenoodles/bda-frontend:latest
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: http://localhost:18080
     container_name: frontend
     restart: always
     ports:

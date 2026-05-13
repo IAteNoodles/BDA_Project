@@ -68,6 +68,7 @@ export interface Forecast {
 
 export interface ForecastTrend {
   skillName: string;
+  averagePredictedDemand: number;
   forecasts: {
     forecastDate: string;
     predictedDemand: number;

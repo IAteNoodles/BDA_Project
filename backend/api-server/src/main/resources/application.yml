@@ -33,3 +33,7 @@ spring:
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+ml:
+  service:
+    url: ${ML_SERVICE_URL:http://localhost:5000}

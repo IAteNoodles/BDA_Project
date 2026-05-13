@@ -1,0 +1,497 @@
+
+######################################################################
+  SECTION 1 — postings.csv
+######################################################################
+  [loaded]  postings.csv  |  encoding=utf-8  |  shape=(123849, 31)
+
+======================================================================
+  FILE: postings.csv
+======================================================================
+  Rows : 123,849
+  Cols : 31
+
+  Column names:
+    ['job_id', 'company_name', 'title', 'description', 'max_salary', 'pay_period', 'location', 'company_id', 'views', 'med_salary', 'min_salary', 'formatted_work_type', 'applies', 'original_listed_time', 'remote_allowed', 'job_posting_url', 'application_url', 'application_type', 'expiry', 'closed_time', 'formatted_experience_level', 'skills_desc', 'listed_time', 'posting_domain', 'sponsored', 'work_type', 'currency', 'compensation_type', 'normalized_salary', 'zip_code', 'fips']
+
+  Null % per column:
+    job_id                                      0.00%  
+    company_name                                1.39%  
+    title                                       0.00%  
+    description                                 0.01%  
+    max_salary                                 75.94%  |||||||||||||||
+    pay_period                                 70.87%  ||||||||||||||
+    location                                    0.00%  
+    company_id                                  1.39%  
+    views                                       1.36%  
+    med_salary                                 94.93%  ||||||||||||||||||
+    min_salary                                 75.94%  |||||||||||||||
+    formatted_work_type                         0.00%  
+    applies                                    81.17%  ||||||||||||||||
+    original_listed_time                        0.00%  
+    remote_allowed                             87.69%  |||||||||||||||||
+    job_posting_url                             0.00%  
+    application_url                            29.60%  |||||
+    application_type                            0.00%  
+    expiry                                      0.00%  
+    closed_time                                99.13%  |||||||||||||||||||
+    formatted_experience_level                 23.75%  ||||
+    skills_desc                                98.03%  |||||||||||||||||||
+    listed_time                                 0.00%  
+    posting_domain                             32.27%  ||||||
+    sponsored                                   0.00%  
+    work_type                                   0.00%  
+    currency                                   70.87%  ||||||||||||||
+    compensation_type                          70.87%  ||||||||||||||
+    normalized_salary                          70.87%  ||||||||||||||
+    zip_code                                   16.85%  |||
+    fips                                       22.14%  ||||
+
+  First 3 rows (transposed for readability):
+    job_id                                    921716  |  1829192  |  10998357
+    company_name                              Corcoran Sawyer Smith  |  nan  |  The National Exemplar 
+    title                                     Marketing Coordinator  |  Mental Health Therapist/Counselor  |  Assitant Restaurant Manager
+    description                               Job descriptionA leading real estate firm in New Jersey is s  |  At Aspen Therapy and Wellness , we are committed to serving   |  The National Exemplar is accepting applications for an Assis
+    max_salary                                20.0  |  50.0  |  65000.0
+    pay_period                                HOURLY  |  HOURLY  |  YEARLY
+    location                                  Princeton, NJ  |  Fort Collins, CO  |  Cincinnati, OH
+    company_id                                2774458.0  |  nan  |  64896719.0
+    views                                     20.0  |  1.0  |  8.0
+    med_salary                                nan  |  nan  |  nan
+    min_salary                                17.0  |  30.0  |  45000.0
+    formatted_work_type                       Full-time  |  Full-time  |  Full-time
+    applies                                   2.0  |  nan  |  nan
+    original_listed_time                      1713397508000.0  |  1712857887000.0  |  1713277614000.0
+    remote_allowed                            nan  |  nan  |  nan
+    job_posting_url                           https://www.linkedin.com/jobs/view/921716/?trk=jobs_biz_prem  |  https://www.linkedin.com/jobs/view/1829192/?trk=jobs_biz_pre  |  https://www.linkedin.com/jobs/view/10998357/?trk=jobs_biz_pr
+    application_url                           nan  |  nan  |  nan
+    application_type                          ComplexOnsiteApply  |  ComplexOnsiteApply  |  ComplexOnsiteApply
+    expiry                                    1715989508000.0  |  1715449887000.0  |  1715869614000.0
+    closed_time                               nan  |  nan  |  nan
+    formatted_experience_level                nan  |  nan  |  nan
+    skills_desc                               Requirements: 
+
+We are seeking a College or Graduate Student  |  nan  |  We are currently accepting resumes for FOH - Asisstant Resta
+    listed_time                               1713397508000.0  |  1712857887000.0  |  1713277614000.0
+    posting_domain                            nan  |  nan  |  nan
+    sponsored                                 0  |  0  |  0
+    work_type                                 FULL_TIME  |  FULL_TIME  |  FULL_TIME
+    currency                                  USD  |  USD  |  USD
+    compensation_type                         BASE_SALARY  |  BASE_SALARY  |  BASE_SALARY
+    normalized_salary                         38480.0  |  83200.0  |  55000.0
+    zip_code                                  8540.0  |  80521.0  |  45202.0
+    fips                                      34021.0  |  8069.0  |  39061.0
+
+----------------------------------------------------------------------
+  [4] Timestamp columns: listed_time & original_listed_time
+----------------------------------------------------------------------
+
+  Column: listed_time
+    dtype      : float64
+    non-null   : 123,849  (100.0%)
+    raw samples: [1713397508000.0, 1712857887000.0, 1713277614000.0, 1712895812000.0, 1713451943000.0]
+    kind       : UNIX ms
+    min date   : 2024-03-24 21:50:14+00:00
+    max date   : 2024-04-20 00:26:56+00:00
+    unique months: 2
+    month distribution (top 15):
+      2024-03        1  |
+      2024-04  123,848  ||||||||||||||||||||||||||||||
+
+  Column: original_listed_time
+    dtype      : float64
+    non-null   : 123,849  (100.0%)
+    raw samples: [1713397508000.0, 1712857887000.0, 1713277614000.0, 1712895812000.0, 1713451943000.0]
+    kind       : UNIX ms
+    min date   : 2023-12-05 21:08:53+00:00
+    max date   : 2024-04-20 00:26:43+00:00
+    unique months: 5
+    month distribution (top 15):
+      2023-12        3  |
+      2024-01        7  |
+      2024-02        9  |
+      2024-03    1,815  |
+      2024-04  122,015  ||||||||||||||||||||||||||||||
+
+  Time series suitability:
+    Unique months in listed_time: 2
+    Monthly listing counts (all):
+      2024-03        1  |
+      2024-04  123,848  ||||||||||||||||||||||||||||||||||||||||
+
+----------------------------------------------------------------------
+  [5] remote_allowed — distribution
+----------------------------------------------------------------------
+    dtype        : float64
+    non-null     : 15,246  (12.3%)
+    null         : 108,603  (87.7%)
+    value_counts :
+      nan         108,603  (87.7%)
+      1.0          15,246  (12.3%)
+
+----------------------------------------------------------------------
+  [6] normalized_salary
+----------------------------------------------------------------------
+    non-null count : 36,073  (29.1%)
+    min            : 0.00
+    max            : 535,600,000.00
+    mean           : 205,327.04
+    median         : 81,500.00
+    percentiles    : 25th=52,000  75th=125,000  95th=200,000
+
+----------------------------------------------------------------------
+  [7] skills_desc
+----------------------------------------------------------------------
+    non-null       : 2,439  (2.0%)
+    non-empty      : 2,439  (2.0%)
+
+    Sample values (first 3 non-empty):
+      [0] Requirements: 
+
+We are seeking a College or Graduate Student (can also be completed with school) with a focus in Planning, Architecture, Real Estate Development or Management or General Business. Must
+      [1] We are currently accepting resumes for FOH - Asisstant Restaurant Management with a strong focus on delivering high quality customer service. Prefer 1 to 3 years FOH management experience. Candidate s
+      [2] This position requires a baseline understanding of online marketing including Search Engine Marketing, Search Engine Optimization, and campaign analytics. The ideal candidate must be an analytical and
+
+----------------------------------------------------------------------
+  [8] Salary columns: min_salary, max_salary, med_salary
+----------------------------------------------------------------------
+
+    min_salary:
+      fill rate : 29,793  (24.1%)
+      min       : 1.00
+      max       : 85,000,000.00
+      median    : 60,000.00
+      mean      : 64,910.85
+
+    max_salary:
+      fill rate : 29,793  (24.1%)
+      min       : 1.00
+      max       : 120,000,000.00
+      median    : 80,000.00
+      mean      : 91,939.42
+
+    med_salary:
+      fill rate : 6,280  (5.1%)
+      min       : 0.00
+      max       : 750,000.00
+      median    : 25.50
+      mean      : 22,015.62
+
+######################################################################
+  SECTION 2 — jobs/job_skills.csv
+######################################################################
+  [loaded]  jobs\job_skills.csv  |  encoding=utf-8  |  shape=(213768, 2)
+
+======================================================================
+  FILE: jobs/job_skills.csv
+======================================================================
+  Rows : 213,768
+  Cols : 2
+
+  Column names:
+    ['job_id', 'skill_abr']
+
+  Null % per column:
+    job_id                                      0.00%  
+    skill_abr                                   0.00%  
+
+  First 3 rows (transposed for readability):
+    job_id                                    3884428798  |  3884428798  |  3884428798
+    skill_abr                                 MRKT  |  PR  |  WRT
+
+######################################################################
+  SECTION 3 — jobs/salaries.csv
+######################################################################
+  [loaded]  jobs\salaries.csv  |  encoding=utf-8  |  shape=(40785, 8)
+
+======================================================================
+  FILE: jobs/salaries.csv
+======================================================================
+  Rows : 40,785
+  Cols : 8
+
+  Column names:
+    ['salary_id', 'job_id', 'max_salary', 'med_salary', 'min_salary', 'pay_period', 'currency', 'compensation_type']
+
+  Null % per column:
+    salary_id                                   0.00%  
+    job_id                                      0.00%  
+    max_salary                                 16.77%  |||
+    med_salary                                 83.23%  ||||||||||||||||
+    min_salary                                 16.77%  |||
+    pay_period                                  0.00%  
+    currency                                    0.00%  
+    compensation_type                           0.00%  
+
+  First 3 rows (transposed for readability):
+    salary_id                                 1  |  2  |  3
+    job_id                                    3884428798  |  3887470552  |  3884431523
+    max_salary                                nan  |  25.0  |  120000.0
+    med_salary                                20.0  |  nan  |  nan
+    min_salary                                nan  |  23.0  |  100000.0
+    pay_period                                HOURLY  |  HOURLY  |  YEARLY
+    currency                                  USD  |  USD  |  USD
+    compensation_type                         BASE_SALARY  |  BASE_SALARY  |  BASE_SALARY
+
+######################################################################
+  SECTION 4 — jobs/job_industries.csv
+######################################################################
+  [loaded]  jobs\job_industries.csv  |  encoding=utf-8  |  shape=(164808, 2)
+
+======================================================================
+  FILE: jobs/job_industries.csv
+======================================================================
+  Rows : 164,808
+  Cols : 2
+
+  Column names:
+    ['job_id', 'industry_id']
+
+  Null % per column:
+    job_id                                      0.00%  
+    industry_id                                 0.00%  
+
+  First 3 rows (transposed for readability):
+    job_id                                    3884428798  |  3887473071  |  3887465684
+    industry_id                               82  |  48  |  41
+
+######################################################################
+  SECTION 5 — jobs/benefits.csv
+######################################################################
+  [loaded]  jobs\benefits.csv  |  encoding=utf-8  |  shape=(67943, 3)
+
+======================================================================
+  FILE: jobs/benefits.csv
+======================================================================
+  Rows : 67,943
+  Cols : 3
+
+  Column names:
+    ['job_id', 'inferred', 'type']
+
+  Null % per column:
+    job_id                                      0.00%  
+    inferred                                    0.00%  
+    type                                        0.00%  
+
+  First 3 rows (transposed for readability):
+    job_id                                    3887473071  |  3887473071  |  3887473071
+    inferred                                  0  |  0  |  0
+    type                                      Medical insurance  |  Vision insurance  |  Dental insurance
+
+######################################################################
+  SECTION 6 — companies/companies.csv
+######################################################################
+  [loaded]  companies\companies.csv  |  encoding=utf-8  |  shape=(24473, 10)
+
+======================================================================
+  FILE: companies/companies.csv
+======================================================================
+  Rows : 24,473
+  Cols : 10
+
+  Column names:
+    ['company_id', 'name', 'description', 'company_size', 'state', 'country', 'city', 'zip_code', 'address', 'url']
+
+  Null % per column:
+    company_id                                  0.00%  
+    name                                        0.00%  
+    description                                 1.21%  
+    company_size                               11.33%  ||
+    state                                       0.09%  
+    country                                     0.00%  
+    city                                        0.00%  
+    zip_code                                    0.11%  
+    address                                     0.09%  
+    url                                         0.00%  
+
+  First 3 rows (transposed for readability):
+    company_id                                1009  |  1016  |  1025
+    name                                      IBM  |  GE HealthCare  |  Hewlett Packard Enterprise
+    description                               At IBM, we do more than work. We create. We create as techno  |  Every day millions of people feel the impact of our intellig  |  Official LinkedIn of Hewlett Packard Enterprise, the global 
+    company_size                              7.0  |  7.0  |  7.0
+    state                                     NY  |  0  |  Texas
+    country                                   US  |  US  |  US
+    city                                      Armonk, New York  |  Chicago  |  Houston
+    zip_code                                  10504  |  0  |  77389
+    address                                   International Business Machines Corp.  |  -  |  1701 E Mossy Oaks Rd Spring
+    url                                       https://www.linkedin.com/company/ibm  |  https://www.linkedin.com/company/gehealthcare  |  https://www.linkedin.com/company/hewlett-packard-enterprise
+
+######################################################################
+  SECTION 7 — companies/company_industries.csv
+######################################################################
+  [loaded]  companies\company_industries.csv  |  encoding=utf-8  |  shape=(24375, 2)
+
+======================================================================
+  FILE: companies/company_industries.csv
+======================================================================
+  Rows : 24,375
+  Cols : 2
+
+  Column names:
+    ['company_id', 'industry']
+
+  Null % per column:
+    company_id                                  0.00%  
+    industry                                    0.00%  
+
+  First 3 rows (transposed for readability):
+    company_id                                391906  |  22292832  |  20300
+    industry                                  Book and Periodical Publishing  |  Construction  |  Banking
+
+######################################################################
+  SECTION 8 — mappings/skills.csv
+######################################################################
+  [loaded]  mappings\skills.csv  |  encoding=utf-8  |  shape=(35, 2)
+
+======================================================================
+  FILE: mappings/skills.csv
+======================================================================
+  Rows : 35
+  Cols : 2
+
+  Column names:
+    ['skill_abr', 'skill_name']
+
+  Null % per column:
+    skill_abr                                   0.00%  
+    skill_name                                  0.00%  
+
+  First 3 rows (transposed for readability):
+    skill_abr                                 ART  |  DSGN  |  ADVR
+    skill_name                                Art/Creative  |  Design  |  Advertising
+
+######################################################################
+  SECTION 9 — mappings/industries.csv
+######################################################################
+  [loaded]  mappings\industries.csv  |  encoding=utf-8  |  shape=(422, 2)
+
+======================================================================
+  FILE: mappings/industries.csv
+======================================================================
+  Rows : 422
+  Cols : 2
+
+  Column names:
+    ['industry_id', 'industry_name']
+
+  Null % per column:
+    industry_id                                 0.00%  
+    industry_name                               8.06%  |
+
+  First 3 rows (transposed for readability):
+    industry_id                               1  |  3  |  4
+    industry_name                             Defense and Space Manufacturing  |  Computer Hardware Manufacturing  |  Software Development
+
+######################################################################
+  ANALYSIS [9] — Top 20 Most Demanded Skills
+######################################################################
+
+  job_skills columns    : ['job_id', 'skill_abr']
+  skills_map columns    : ['skill_abr', 'skill_name']
+
+  Join key left  (job_skills)   : skill_abr
+  Join key right (skills_map)   : skill_abr
+  Skill name column             : skill_name
+
+  TOP 20 MOST DEMANDED SKILLS:
+  Rank   Skill Name                              Count   % of job-skill rows
+  -----  -----------------------------------  --------  --------------------
+  1      Information Technology                 26,137                12.23%  ||||||||||||||||||||||||
+  2      Sales                                  22,475                10.51%  |||||||||||||||||||||
+  3      Management                             20,861                 9.76%  |||||||||||||||||||
+  4      Manufacturing                          18,185                 8.51%  |||||||||||||||||
+  5      Health Care Provider                   17,369                 8.13%  ||||||||||||||||
+  6      Business Development                   14,290                 6.68%  |||||||||||||
+  7      Engineering                            13,009                 6.09%  ||||||||||||
+  8      Other                                  12,608                 5.90%  |||||||||||
+  9      Finance                                 8,540                 3.99%  |||||||
+  10     Marketing                               5,525                 2.58%  |||||
+  11     Accounting/Auditing                     5,461                 2.55%  |||||
+  12     Administrative                          4,860                 2.27%  ||||
+  13     Customer Service                        4,292                 2.01%  ||||
+  14     Project Management                      3,997                 1.87%  |||
+  15     Analyst                                 3,858                 1.80%  |||
+  16     Research                                2,986                 1.40%  ||
+  17     Human Resources                         2,647                 1.24%  ||
+  18     Legal                                   2,371                 1.11%  ||
+  19     Consulting                              2,338                 1.09%  ||
+  20     Education                               2,290                 1.07%  ||
+
+######################################################################
+  ANALYSIS [10] — job_skills JOIN postings (skill + date)
+######################################################################
+
+  postings job_id col  : job_id
+  job_skills job_id col: job_id
+
+  Full join shape: (213768, 4)
+  Rows with valid date: 205,778
+
+  Sample join result (10 rows with date):
+    job_id           skill_name               listed_date
+3884428798            Marketing 2024-04-05 19:37:44+00:00
+3884428798     Public Relations 2024-04-05 19:37:44+00:00
+3884428798      Writing/Editing 2024-04-05 19:37:44+00:00
+3887473071                Sales 2024-04-05 19:35:10+00:00
+3887465684              Finance 2024-04-05 19:34:32+00:00
+3887465684                Sales 2024-04-05 19:34:32+00:00
+3887467939                Sales 2024-04-05 19:36:30+00:00
+3887467939          Advertising 2024-04-05 19:36:30+00:00
+3887467939 Business Development 2024-04-05 19:36:30+00:00
+3887471331          Engineering 2024-04-05 19:36:46+00:00
+
+  Skill demand time series — top 5 skills by month (sample):
+skill_name  Health Care Provider  Information Technology  Management  Manufacturing    Sales
+month                                                                                       
+2024-03                      0.0                     0.0         1.0            1.0      0.0
+2024-04                  16675.0                 25256.0     20384.0        17727.0  21193.0
+
+######################################################################
+  OVERALL VERDICT
+######################################################################
+
+  +-------------+----------------------------------------------------------+
+  |              LINKEDIN DATASET - FITNESS SCORECARD           |
+  +-------------+----------------------------------------------------------+
+  | USE CASE    | ASSESSMENT                                               |
+  +-------------+----------------------------------------------------------+
+  | (a) MONTHLY | listed_time non-null: 123,849 (100.0%)
+  | JOB LISTING | Unique months      : 2
+  | TIME SERIES | VERDICT: [POOR]    
+  +-------------+----------------------------------------------------------+
+  | (b) SKILL   | job_skills rows    : 213,768
+  | DEMAND TS   | Joinable to dates  : YES (via job_id -> postings)
+  |             | VERDICT: [EXCELLENT]
+  +-------------+----------------------------------------------------------+
+  | (c) SALARY  | normalized_salary  : 36,073 (29.1%)
+  | ANALYSIS    | min/max/med cols   : available (see above)
+  |             | salaries.csv       : also available
+  |             | VERDICT: [MODERATE - sparse]
+  +-------------+----------------------------------------------------------+
+  | (d) REMOTE  | remote_allowed non-null: 15,246 (12.3%)
+  | WORK        | Binary flag (0/1)
+  | ANALYSIS    | VERDICT: [POOR - very sparse]
+  +-------------+----------------------------------------------------------+
+
+  DETAILED NOTES:
+  • postings.csv has 123,849 rows covering 2 unique months
+  • job_skills has 213,768 rows joinable to postings via job_id
+  • skills_map has 35 skill name mappings
+  • normalized_salary covers 29.1% of postings — treat with care
+  • remote_allowed covers 12.3% of postings (rest = NaN, assumed unknown)
+  • jobs/salaries.csv provides an independent salary lookup table
+  • The dataset is REAL LinkedIn data — no synthetic rows
+  • Temporal coverage: 2024-03-24 → 2024-04-20
+
+  RECOMMENDATION:
+  [WARNING] Only 2 unique months detected in listed_time.
+     listed_time is nearly all April 2024 — a single-month snapshot.
+     Use original_listed_time for a slightly wider window (5 months).
+     For TRUE time-series, you may need to supplement with other datasets.
+     However, skill demand, salary, and remote analyses are still viable
+     as cross-sectional snapshots with 123K+ postings.
+
+======================================================================
+  EDA COMPLETE
+======================================================================
+

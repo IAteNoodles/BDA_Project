@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import { Line } from 'react-chartjs-2';
-import { format, parseISO } from 'date-fns';
+import { useState, useEffect } from "react";
+import { Line } from "react-chartjs-2";
+import { format, parseISO } from "date-fns";
 import {
   getForecastTrends,
   getForecasts,
@@ -9,30 +9,31 @@ import {
   type ForecastTrend,
   type Forecast,
   type JobListingsTrend,
-} from '../services/api';
-import '../services/chartConfig';
+} from "../services/api";
+import "../services/chartConfig";
 
 const LINE_COLORS = [
-  { border: 'rgb(59, 130, 246)', bg: 'rgba(59, 130, 246, 0.1)' },
-  { border: 'rgb(16, 185, 129)', bg: 'rgba(16, 185, 129, 0.1)' },
-  { border: 'rgb(245, 158, 11)', bg: 'rgba(245, 158, 11, 0.1)' },
-  { border: 'rgb(239, 68, 68)', bg: 'rgba(239, 68, 68, 0.1)' },
-  { border: 'rgb(139, 92, 246)', bg: 'rgba(139, 92, 246, 0.1)' },
-  { border: 'rgb(236, 72, 153)', bg: 'rgba(236, 72, 153, 0.1)' },
-  { border: 'rgb(20, 184, 166)', bg: 'rgba(20, 184, 166, 0.1)' },
-  { border: 'rgb(249, 115, 22)', bg: 'rgba(249, 115, 22, 0.1)' },
-  { border: 'rgb(99, 102, 241)', bg: 'rgba(99, 102, 241, 0.1)' },
-  { border: 'rgb(34, 197, 94)', bg: 'rgba(34, 197, 94, 0.1)' },
+  { border: "rgb(59, 130, 246)", bg: "rgba(59, 130, 246, 0.1)" },
+  { border: "rgb(16, 185, 129)", bg: "rgba(16, 185, 129, 0.1)" },
+  { border: "rgb(245, 158, 11)", bg: "rgba(245, 158, 11, 0.1)" },
+  { border: "rgb(239, 68, 68)", bg: "rgba(239, 68, 68, 0.1)" },
+  { border: "rgb(139, 92, 246)", bg: "rgba(139, 92, 246, 0.1)" },
+  { border: "rgb(236, 72, 153)", bg: "rgba(236, 72, 153, 0.1)" },
+  { border: "rgb(20, 184, 166)", bg: "rgba(20, 184, 166, 0.1)" },
+  { border: "rgb(249, 115, 22)", bg: "rgba(249, 115, 22, 0.1)" },
+  { border: "rgb(99, 102, 241)", bg: "rgba(99, 102, 241, 0.1)" },
+  { border: "rgb(34, 197, 94)", bg: "rgba(34, 197, 94, 0.1)" },
 ];
 
 export default function Forecasts() {
   const [trends, setTrends] = useState<ForecastTrend[]>([]);
   const [predictions, setPredictions] = useState<ForecastTrend[]>([]);
-  const [jobListingsTrend, setJobListingsTrend] = useState<JobListingsTrend | null>(null);
+  const [jobListingsTrend, setJobListingsTrend] =
+    useState<JobListingsTrend | null>(null);
   const [forecasts, setForecasts] = useState<Forecast[]>([]);
   const [totalElements, setTotalElements] = useState(0);
   const [page, setPage] = useState(0);
-  const [skillFilter, setSkillFilter] = useState('');
+  const [skillFilter, setSkillFilter] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -60,7 +61,7 @@ export default function Forecasts() {
         setForecasts(res.data.content);
         setTotalElements(res.data.totalElements);
       })
-      .catch((err) => setError(err.message || 'Failed to load forecasts'))
+      .catch((err) => setError(err.message || "Failed to load forecasts"))
       .finally(() => setLoading(false));
   }, [page, skillFilter]);
 
@@ -90,16 +91,16 @@ export default function Forecasts() {
       {
         label: `${trend.skillName} Upper`,
         data: allDates.map((d) => dateMap.get(d)?.confidenceUpper ?? null),
-        borderColor: 'transparent',
+        borderColor: "transparent",
         backgroundColor: color.bg,
-        fill: '+1',
+        fill: "+1",
         pointRadius: 0,
       },
       {
         label: `${trend.skillName} Lower`,
         data: allDates.map((d) => dateMap.get(d)?.confidenceLower ?? null),
-        borderColor: 'transparent',
-        backgroundColor: 'transparent',
+        borderColor: "transparent",
+        backgroundColor: "transparent",
         fill: false,
         pointRadius: 0,
       },
@@ -107,7 +108,7 @@ export default function Forecasts() {
   });
 
   const chartData = {
-    labels: allDates.map((d) => format(parseISO(d), 'MMM yyyy')),
+    labels: allDates.map((d) => format(parseISO(d), "MMM yyyy")),
     datasets: [...confidenceDatasets, ...lineDatasets],
   };
 
@@ -144,9 +145,9 @@ export default function Forecasts() {
           const f = dateMap.get(d);
           return f ? f.confidenceUpper : null;
         }),
-        borderColor: 'transparent',
+        borderColor: "transparent",
         backgroundColor: color.bg,
-        fill: '+1',
+        fill: "+1",
         pointRadius: 0,
       },
       {
@@ -155,8 +156,8 @@ export default function Forecasts() {
           const f = dateMap.get(d);
           return f ? f.confidenceLower : null;
         }),
-        borderColor: 'transparent',
-        backgroundColor: 'transparent',
+        borderColor: "transparent",
+        backgroundColor: "transparent",
         fill: false,
         pointRadius: 0,
       },
@@ -164,7 +165,7 @@ export default function Forecasts() {
   });
 
   const predictionChartData = {
-    labels: predAllDates.map((d) => format(parseISO(d), 'MMM yyyy')),
+    labels: predAllDates.map((d) => format(parseISO(d), "MMM yyyy")),
     datasets: [...predConfidenceDatasets, ...predLineDatasets],
   };
 
@@ -176,58 +177,58 @@ export default function Forecasts() {
     ].sort();
 
     const historicalMap = new Map(
-      jobListingsTrend.historical.map((h) => [h.date, h])
+      jobListingsTrend.historical.map((h) => [h.date, h]),
     );
     const predictedMap = new Map(
-      jobListingsTrend.predicted.map((p) => [p.date, p])
+      jobListingsTrend.predicted.map((p) => [p.date, p]),
     );
 
     jobListingsChartData = {
-      labels: allMonths.map((d) => format(parseISO(d), 'MMM yyyy')),
+      labels: allMonths.map((d) => format(parseISO(d), "MMM yyyy")),
       datasets: [
         {
-          label: 'Upper Confidence',
+          label: "Prediction Upper CI",
           data: allMonths.map((d) => {
             const p = predictedMap.get(d);
             return p?.confidenceUpper ?? null;
           }),
-          borderColor: 'transparent',
-          backgroundColor: 'rgba(239, 68, 68, 0.08)',
-          fill: '+1',
+          borderColor: "transparent",
+          backgroundColor: "rgba(239, 68, 68, 0.08)",
+          fill: "+1",
           pointRadius: 0,
         },
         {
-          label: 'Lower Confidence',
+          label: "Prediction Lower CI",
           data: allMonths.map((d) => {
             const p = predictedMap.get(d);
             return p?.confidenceLower ?? null;
           }),
-          borderColor: 'transparent',
-          backgroundColor: 'transparent',
+          borderColor: "transparent",
+          backgroundColor: "transparent",
           fill: false,
           pointRadius: 0,
         },
         {
-          label: 'Historical',
+          label: "Historical",
           data: allMonths.map((d) => {
             const h = historicalMap.get(d);
             return h ? h.count : null;
           }),
-          borderColor: 'rgb(59, 130, 246)',
-          backgroundColor: 'rgba(59, 130, 246, 0.1)',
+          borderColor: "rgb(59, 130, 246)",
+          backgroundColor: "rgba(59, 130, 246, 0.1)",
           tension: 0.3,
           fill: false,
           pointRadius: 2,
           borderWidth: 2,
         },
         {
-          label: 'ML Prediction',
+          label: "ML Prediction",
           data: allMonths.map((d) => {
             const p = predictedMap.get(d);
             return p ? p.count : null;
           }),
-          borderColor: 'rgb(239, 68, 68)',
-          backgroundColor: 'rgba(239, 68, 68, 0.1)',
+          borderColor: "rgb(239, 68, 68)",
+          backgroundColor: "rgba(239, 68, 68, 0.1)",
           borderDash: [6, 3],
           tension: 0.3,
           fill: false,
@@ -241,7 +242,9 @@ export default function Forecasts() {
   return (
     <div className="space-y-6">
       <div className="rounded-lg bg-white p-6 shadow">
-        <h3 className="mb-4 text-lg font-medium text-gray-900">Forecast Trends with Confidence Intervals</h3>
+        <h3 className="mb-4 text-lg font-medium text-gray-900">
+          Forecast Trends with Confidence Intervals
+        </h3>
         <div className="h-[28rem]">
           <Line
             data={chartData}
@@ -250,14 +253,15 @@ export default function Forecasts() {
               maintainAspectRatio: false,
               plugins: {
                 legend: {
-                  position: 'bottom',
+                  position: "bottom",
                   labels: {
                     filter: (item) =>
-                      !item.text.includes('Upper') && !item.text.includes('Lower'),
+                      !item.text.includes("Upper") &&
+                      !item.text.includes("Lower"),
                   },
                 },
                 tooltip: {
-                  mode: 'index',
+                  mode: "index",
                   intersect: false,
                 },
               },
@@ -273,8 +277,8 @@ export default function Forecasts() {
                 y: { beginAtZero: true },
               },
               interaction: {
-                mode: 'nearest',
-                axis: 'x',
+                mode: "nearest",
+                axis: "x",
                 intersect: false,
               },
             }}
@@ -284,8 +288,13 @@ export default function Forecasts() {
 
       {jobListingsChartData && (
         <div className="rounded-lg bg-white p-6 shadow">
-          <h3 className="mb-2 text-lg font-medium text-gray-900">Job Listings Forecast — ML Prediction (to 2027)</h3>
-          <p className="mb-4 text-sm text-gray-500">Linear regression on historical monthly posting counts. Solid = historical, dashed = ML prediction with 95% confidence band.</p>
+          <h3 className="mb-2 text-lg font-medium text-gray-900">
+            Job Listings Forecast — ML Prediction (to 2027)
+          </h3>
+          <p className="mb-4 text-sm text-gray-500">
+            Linear regression model trained on historical posting data. Dashed
+            line = ML prediction with 95% confidence band.
+          </p>
           <div className="h-[28rem]">
             <Line
               data={jobListingsChartData}
@@ -294,13 +303,15 @@ export default function Forecasts() {
                 maintainAspectRatio: false,
                 plugins: {
                   legend: {
-                    position: 'bottom',
+                    position: "bottom",
                     labels: {
-                      filter: (item) => !item.text.includes('Confidence'),
+                      filter: (item) =>
+                        !item.text.includes("CI") &&
+                        !item.text.includes("Confidence"),
                     },
                   },
                   tooltip: {
-                    mode: 'index',
+                    mode: "index",
                     intersect: false,
                   },
                 },
@@ -317,13 +328,13 @@ export default function Forecasts() {
                     beginAtZero: true,
                     title: {
                       display: true,
-                      text: 'Job Listings Count',
+                      text: "Job Listings Count",
                     },
                   },
                 },
                 interaction: {
-                  mode: 'nearest',
-                  axis: 'x',
+                  mode: "nearest",
+                  axis: "x",
                   intersect: false,
                 },
               }}
@@ -334,8 +345,13 @@ export default function Forecasts() {
 
       {predictions.length > 0 && (
         <div className="rounded-lg bg-white p-6 shadow">
-          <h3 className="mb-2 text-lg font-medium text-gray-900">Skill Demand ML Predictions (to 2027)</h3>
-          <p className="mb-4 text-sm text-gray-500">Linear regression forecast per skill based on historical demand data. Top 10 skills by average predicted demand.</p>
+          <h3 className="mb-2 text-lg font-medium text-gray-900">
+            Skill Demand ML Predictions (to 2027)
+          </h3>
+          <p className="mb-4 text-sm text-gray-500">
+            Linear regression forecast per skill based on historical demand
+            data. Top 10 skills by average predicted demand.
+          </p>
           <div className="h-[28rem]">
             <Line
               data={predictionChartData}
@@ -344,14 +360,15 @@ export default function Forecasts() {
                 maintainAspectRatio: false,
                 plugins: {
                   legend: {
-                    position: 'bottom',
+                    position: "bottom",
                     labels: {
                       filter: (item) =>
-                        !item.text.includes('Upper') && !item.text.includes('Lower'),
+                        !item.text.includes("Upper") &&
+                        !item.text.includes("Lower"),
                     },
                   },
                   tooltip: {
-                    mode: 'index',
+                    mode: "index",
                     intersect: false,
                   },
                 },
@@ -368,13 +385,13 @@ export default function Forecasts() {
                     beginAtZero: true,
                     title: {
                       display: true,
-                      text: 'Predicted Demand',
+                      text: "Predicted Demand",
                     },
                   },
                 },
                 interaction: {
-                  mode: 'nearest',
-                  axis: 'x',
+                  mode: "nearest",
+                  axis: "x",
                   intersect: false,
                 },
               }}
@@ -402,9 +419,7 @@ export default function Forecasts() {
           </div>
         </div>
 
-        {error && (
-          <div className="p-4 text-sm text-red-700">{error}</div>
-        )}
+        {error && <div className="p-4 text-sm text-red-700">{error}</div>}
 
         {loading ? (
           <div className="flex h-48 items-center justify-center">
@@ -415,29 +430,48 @@ export default function Forecasts() {
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Skill</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Forecast Date</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Predicted Demand</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Confidence Range</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Model Version</th>
-                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">Region</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                    Skill
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                    Forecast Date
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                    Predicted Demand
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                    Confidence Range
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                    Model Version
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                    Region
+                  </th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 bg-white">
                 {forecasts.map((fc) => (
                   <tr key={fc.id} className="hover:bg-gray-50">
-                    <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">{fc.skillName}</td>
+                    <td className="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
+                      {fc.skillName}
+                    </td>
                     <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                      {format(parseISO(fc.forecastDate), 'MMM d, yyyy')}
+                      {format(parseISO(fc.forecastDate), "MMM d, yyyy")}
                     </td>
                     <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-900 font-semibold">
                       {fc.predictedDemand.toLocaleString()}
                     </td>
                     <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
-                      {fc.confidenceLower.toLocaleString()} – {fc.confidenceUpper.toLocaleString()}
+                      {fc.confidenceLower.toLocaleString()} –{" "}
+                      {fc.confidenceUpper.toLocaleString()}
                     </td>
-                    <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{fc.modelVersion}</td>
-                    <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">{fc.region || 'N/A'}</td>
+                    <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                      {fc.modelVersion}
+                    </td>
+                    <td className="whitespace-nowrap px-6 py-4 text-sm text-gray-500">
+                      {fc.region || "N/A"}
+                    </td>
                   </tr>
                 ))}
               </tbody>

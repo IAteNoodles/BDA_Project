@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS job_listings (
 -- Skill demand tracking
 CREATE TABLE IF NOT EXISTS skill_demand (
     id BIGSERIAL PRIMARY KEY,
-    skill_name VARCHAR(255) NOT NULL,
+    skill_name VARCHAR(100) NOT NULL,
     demand_count INTEGER DEFAULT 0,
     period_start DATE NOT NULL,
     period_end DATE NOT NULL,
@@ -39,11 +39,11 @@ CREATE TABLE IF NOT EXISTS skill_demand (
 -- Forecast results
 CREATE TABLE IF NOT EXISTS forecast_results (
     id BIGSERIAL PRIMARY KEY,
-    skill_name VARCHAR(255) NOT NULL,
+    skill_name VARCHAR(100) NOT NULL,
     forecast_date DATE NOT NULL,
-    predicted_demand DECIMAL(10,2),
-    confidence_lower DECIMAL(10,2),
-    confidence_upper DECIMAL(10,2),
+    predicted_demand DOUBLE PRECISION,
+    confidence_lower DOUBLE PRECISION,
+    confidence_upper DOUBLE PRECISION,
     model_version VARCHAR(50),
     region VARCHAR(100),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -61,6 +61,6 @@ CREATE INDEX IF NOT EXISTS idx_forecast_skill ON forecast_results(skill_name);
 CREATE INDEX IF NOT EXISTS idx_forecast_date ON forecast_results(forecast_date);
 
 -- Seed data using COPY FROM STDIN
-COPY job_listings (title, company, location, salary_min, salary_max, salary_currency, source, source_id, posted_date, job_type, experience_level, industry, is_remote, skills) FROM '/seed/job_listings.tsv';
-COPY skill_demand (skill_name, demand_count, period_start, period_end, region, industry) FROM '/seed/skill_demand.tsv';
-COPY forecast_results (skill_name, forecast_date, predicted_demand, confidence_lower, confidence_upper, model_version, region) FROM '/seed/forecast_results.tsv';
+COPY job_listings (title, company, location, salary_min, salary_max, salary_currency, source, source_id, posted_date, job_type, experience_level, industry, is_remote, skills) FROM '/seed/job_listings.tsv' WITH (FORMAT csv, DELIMITER E'\t', HEADER);
+COPY skill_demand (skill_name, demand_count, period_start, period_end, region, industry) FROM '/seed/skill_demand.tsv' WITH (FORMAT csv, DELIMITER E'\t', HEADER);
+COPY forecast_results (skill_name, forecast_date, predicted_demand, confidence_lower, confidence_upper, model_version, region) FROM '/seed/forecast_results.tsv' WITH (FORMAT csv, DELIMITER E'\t', HEADER);

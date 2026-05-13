@@ -1,0 +1,246 @@
+{
+  "historical": [
+    {
+      "date": "2024-01-01",
+      "count": 1.0,
+      "confidenceLower": null,
+      "confidenceUpper": null
+    },
+    {
+      "date": "2024-02-01",
+      "count": 22.0,
+      "confidenceLower": null,
+      "confidenceUpper": null
+    },
+    {
+      "date": "2024-03-01",
+      "count": 46.0,
+      "confidenceLower": null,
+      "confidenceUpper": null
+    },
+    {
+      "date": "2024-04-01",
+      "count": 19.0,
+      "confidenceLower": null,
+      "confidenceUpper": null
+    },
+    {
+      "date": "2024-05-01",
+      "count": 19.0,
+      "confidenceLower": null,
+      "confidenceUpper": null
+    },
+    {
+      "date": "2024-06-01",
+      "count": 10.0,
+      "confidenceLower": null,
+      "confidenceUpper": null
+    },
+    {
+      "date": "2025-03-01",
+      "count": 7.0,
+      "confidenceLower": null,
+      "confidenceUpper": null
+    },
+    {
+      "date": "2025-04-01",
+      "count": 11.0,
+      "confidenceLower": null,
+      "confidenceUpper": null
+    }
+  ],
+  "predicted": [
+    {
+      "date": "2025-05-01",
+      "count": 9.0,
+      "confidenceLower": 3.46,
+      "confidenceUpper": 14.54
+    },
+    {
+      "date": "2025-06-01",
+      "count": 10.0,
+      "confidenceLower": 4.46,
+      "confidenceUpper": 15.54
+    },
+    {
+      "date": "2025-07-01",
+      "count": 11.0,
+      "confidenceLower": 5.46,
+      "confidenceUpper": 16.54
+    },
+    {
+      "date": "2025-08-01",
+      "count": 12.0,
+      "confidenceLower": 6.46,
+      "confidenceUpper": 17.54
+    },
+    {
+      "date": "2025-09-01",
+      "count": 13.0,
+      "confidenceLower": 7.46,
+      "confidenceUpper": 18.54
+    },
+    {
+      "date": "2025-10-01",
+      "count": 14.0,
+      "confidenceLower": 8.46,
+      "confidenceUpper": 19.54
+    },
+    {
+      "date": "2025-11-01",
+      "count": 15.0,
+      "confidenceLower": 9.46,
+      "confidenceUpper": 20.54
+    },
+    {
+      "date": "2025-12-01",
+      "count": 16.0,
+      "confidenceLower": 10.46,
+      "confidenceUpper": 21.54
+    },
+    {
+      "date": "2026-01-01",
+      "count": 17.0,
+      "confidenceLower": 11.46,
+      "confidenceUpper": 22.54
+    },
+    {
+      "date": "2026-02-01",
+      "count": 18.0,
+      "confidenceLower": 12.46,
+      "confidenceUpper": 23.54
+    },
+    {
+      "date": "2026-03-01",
+      "count": 19.0,
+      "confidenceLower": 13.46,
+      "confidenceUpper": 24.54
+    },
+    {
+      "date": "2026-04-01",
+      "count": 20.0,
+      "confidenceLower": 14.46,
+      "confidenceUpper": 25.54
+    },
+    {
+      "date": "2026-05-01",
+      "count": 21.0,
+      "confidenceLower": 15.46,
+      "confidenceUpper": 26.54
+    },
+    {
+      "date": "2026-06-01",
+      "count": 22.0,
+      "confidenceLower": 16.46,
+      "confidenceUpper": 27.54
+    },
+    {
+      "date": "2026-07-01",
+      "count": 23.0,
+      "confidenceLower": 17.46,
+      "confidenceUpper": 28.54
+    },
+    {
+      "date": "2026-08-01",
+      "count": 24.0,
+      "confidenceLower": 18.46,
+      "confidenceUpper": 29.54
+    },
+    {
+      "date": "2026-09-01",
+      "count": 25.0,
+      "confidenceLower": 19.46,
+      "confidenceUpper": 30.54
+    },
+    {
+      "date": "2026-10-01",
+      "count": 26.0,
+      "confidenceLower": 20.46,
+      "confidenceUpper": 31.54
+    },
+    {
+      "date": "2026-11-01",
+      "count": 27.0,
+      "confidenceLower": 21.46,
+      "confidenceUpper": 32.54
+    },
+    {
+      "date": "2026-12-01",
+      "count": 28.0,
+      "confidenceLower": 22.46,
+      "confidenceUpper": 33.54
+    },
+    {
+      "date": "2027-01-01",
+      "count": 29.0,
+      "confidenceLower": 23.46,
+      "confidenceUpper": 34.54
+    },
+    {
+      "date": "2027-02-01",
+      "count": 30.0,
+      "confidenceLower": 24.46,
+      "confidenceUpper": 35.54
+    },
+    {
+      "date": "2027-03-01",
+      "count": 31.0,
+      "confidenceLower": 25.46,
+      "confidenceUpper": 36.54
+    },
+    {
+      "date": "2027-04-01",
+      "count": 32.0,
+      "confidenceLower": 26.46,
+      "confidenceUpper": 37.54
+    },
+    {
+      "date": "2027-05-01",
+      "count": 33.0,
+      "confidenceLower": 27.46,
+      "confidenceUpper": 38.54
+    },
+    {
+      "date": "2027-06-01",
+      "count": 34.0,
+      "confidenceLower": 28.46,
+      "confidenceUpper": 39.54
+    },
+    {
+      "date": "2027-07-01",
+      "count": 35.0,
+      "confidenceLower": 29.46,
+      "confidenceUpper": 40.54
+    },
+    {
+      "date": "2027-08-01",
+      "count": 36.0,
+      "confidenceLower": 30.46,
+      "confidenceUpper": 41.54
+    },
+    {
+      "date": "2027-09-01",
+      "count": 37.0,
+      "confidenceLower": 31.46,
+      "confidenceUpper": 42.54
+    },
+    {
+      "date": "2027-10-01",
+      "count": 38.0,
+      "confidenceLower": 32.46,
+      "confidenceUpper": 43.54
+    },
+    {
+      "date": "2027-11-01",
+      "count": 39.0,
+      "confidenceLower": 33.46,
+      "confidenceUpper": 44.54
+    },
+    {
+      "date": "2027-12-01",
+      "count": 40.0,
+      "confidenceLower": 34.46,
+      "confidenceUpper": 45.54
+    }
+  ]
+}

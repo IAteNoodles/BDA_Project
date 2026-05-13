@@ -1,6 +1,77 @@
+# Original project patterns
 ./stable-env/
-./data/ 
+./data/
 /stable-env
 .stable-env
 .data
 /data
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+*.whl
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# Environment variables
+.env
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Node
+node_modules/
+
+# Java
+target/
+*.jar
+*.class
+
+# Docker volumes
+data/
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Cache
+.cache/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+
+# Model artifacts
+*.pkl
+*.joblib
+*.h5
+*.safetensors
+
+# opencode
+.opencode/

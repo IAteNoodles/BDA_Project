@@ -1,3 +1,6 @@
 ./stable-env/
 ./data/ 
-
+/stable-env
+.stable-env
+.data
+/data
